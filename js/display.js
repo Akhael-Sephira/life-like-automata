@@ -40,7 +40,10 @@ Display.prototype = {
         });
     
         // Set Click Events
-        canvas.addEventListener('mousedown', (e) => {
+        canvas.addEventListener('touchmove', (e) => {
+            e.preventDefault();
+        });
+        canvas.addEventListener('pointerdown', (e) => {
             this.downFlag.status = true;
 
             const x = Math.floor(e.offsetX / (this.sizes.rect.width / this.world.columns));
@@ -51,11 +54,11 @@ Display.prototype = {
             this.downFlag.alive = world.getCell(x, y).alive;
             world.setCell(x, y);
         });
-        canvas.addEventListener('mouseup', (e) => {
+        canvas.addEventListener('pointerup', (e) => {
             this.downFlag.status = false;
             this.downFlag.coor = null;
         });
-        canvas.addEventListener('mousemove', (e) => {
+        canvas.addEventListener('pointermove', (e) => {
     
             if (!this.downFlag.status) return;
 
