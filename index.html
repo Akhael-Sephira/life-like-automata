@@ -143,6 +143,8 @@
 </body>
 <script defer>
 
+    document.querySelector("#game-of-life").style.height = `${window.innerHeight}px`;
+    
     const world = new World();
     const canvas = document.querySelector("canvas");
     const display = new Display(world, canvas);
